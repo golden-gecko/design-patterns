@@ -14,11 +14,27 @@ export namespace DemoComponent
 
 	class Component
 	{
+	public:
+		Component(const std::string& name) : name(name)
+		{
+		}
+
+		const std::string& getName() const
+		{
+			return name;
+		}
+
+	private:
+		std::string name;
 	};
 
 	class Engine : public Component
 	{
 	public:
+		Engine(const std::string& name) : Component(name)
+		{
+		}
+
 		void start()
 		{
 		}
@@ -27,6 +43,10 @@ export namespace DemoComponent
 	class Renderer : public Component
 	{
 	public:
+		Renderer(const std::string& name) : Component(name)
+		{
+		}
+
 		void render()
 		{
 		}
@@ -35,6 +55,10 @@ export namespace DemoComponent
 	class Transform : public Component
 	{
 	public:
+		Transform(const std::string& name) : Component(name)
+		{
+		}
+
 		void move()
 		{
 		}
@@ -62,12 +86,6 @@ export namespace DemoComponent
 		{
 		}
 
-		template <class T>
-		T get()
-		{
-			return T();
-		}
-
 	private:
 		int id;
 		std::string name;
@@ -77,14 +95,47 @@ export namespace DemoComponent
 	{
 	public:
 		virtual ~IPool() = default;
+		virtual std::string toString() const = 0;
 	};
 
 	template <class T>
 	class Pool : public IPool
 	{
 	public:
-		std::vector<T> components;
-		std::map<int, int> entityToIndex;
+		std::shared_ptr<T> get(int entity) const
+		{
+			auto item = entityToComponent.find(entity);
+
+			if (item == entityToComponent.end())
+			{
+				return nullptr;
+			}
+
+			return components[item->second];
+		}
+
+		std::string toString() const override
+		{
+			std::stringstream str;
+
+			for (const auto& component : components)
+			{
+				str << "    " << component->getName() << '\n';
+			}
+
+			str << '\n';
+
+			for (const auto& ids : entityToComponent)
+			{
+				str << "    Entity " << ids.first << " : Component " << ids.second << '\n';
+			}
+
+			return str.str();
+		}
+
+	public:
+		std::vector<std::shared_ptr<T>> components;
+		std::map<int, int> entityToComponent;
 	};
 
 	class Coordinator
@@ -124,14 +175,33 @@ export namespace DemoComponent
 		}
 
 		template <class T>
-		void add(Entity& entity, T component)
+		void add(Entity& entity, std::shared_ptr<T> component)
 		{
 			auto pool = getPool<T>();
 
 			if (pool)
 			{
+				pool->entityToComponent.insert(std::make_pair(entity.getId(), static_cast<int>(pool->components.size())));
 				pool->components.push_back(component);
 			}
+		}
+
+		template <class T>
+		std::shared_ptr<T> get(Entity& entity)
+		{
+			if (auto item = entities.find(entity.getId()); item == entities.end())
+			{
+				return nullptr;
+			}
+
+			auto pool = getPool<T>();
+
+			if (pool == nullptr)
+			{
+				return nullptr;
+			}
+
+			return pool->get(entity.getId());
 		}
 
 		template <class T>
@@ -150,14 +220,15 @@ export namespace DemoComponent
 				str << "  " << i.first << ' ' << i.second.getName() << '\n';
 			}
 
-			str << "Components (" << components.size() << "):\n";
+			str << "\nComponents (" << components.size() << "):\n";
 
 			for (const auto& i : components)
 			{
-				str << "  " << i.first << '\n';
+				str << "  " << i.first << ' ' << '\n';
+				str << i.second->toString() << '\n';
 			}
 
-			str << "Component types (" << componentTypes.size() << "):\n";
+			str << "\nComponent types (" << componentTypes.size() << "):\n";
 
 			for (const auto& i : componentTypes)
 			{
@@ -184,26 +255,24 @@ export namespace DemoComponent
 		coordinator.registerComponent<Renderer>();
 		coordinator.registerComponent<Transform>();
 
-		std::cout << coordinator.toString() << std::endl;
-
 		Entity car = coordinator.createEntity("Car");
 		Entity truck = coordinator.createEntity("Truck");
 
+		coordinator.add(car, std::make_shared<Engine>("Engine for car"));
+		coordinator.add(car, std::make_shared<Renderer>("Renderer for car"));
+		coordinator.add(car, std::make_shared<Transform>("Transform for car"));
+
+		coordinator.add(truck, std::make_shared<Renderer>("Renderer for truck"));
+		coordinator.add(truck, std::make_shared<Transform>("Transform for truck"));
+
+		auto c1 = coordinator.get<Engine>(car);
+		auto c2 = coordinator.get<Renderer>(car);
+		auto c3 = coordinator.get<Transform>(car);
+
+		auto c4 = coordinator.get<Engine>(truck);
+		auto c5 = coordinator.get<Renderer>(truck);
+		auto c6 = coordinator.get<Transform>(truck);
+
 		std::cout << coordinator.toString() << std::endl;
-
-		coordinator.add(car, Engine());
-		coordinator.add(car, Renderer());
-		coordinator.add(car, Transform());
-
-		coordinator.add(truck, Renderer());
-		coordinator.add(truck, Transform());
-		
-		car.get<Engine>().start();
-		car.get<Renderer>().render();
-		car.get<Transform>().move();
-
-		truck.get<Engine>().start();
-		truck.get<Renderer>().render();
-		truck.get<Transform>().move();
 	}
 }
