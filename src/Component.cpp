@@ -120,7 +120,10 @@ export namespace DemoComponent
 
 			for (const auto& component : components)
 			{
-				str << "    " << component->getName() << '\n';
+				if (component)
+				{
+					str << "    " << component->getName() << '\n';
+				}
 			}
 
 			str << '\n';
@@ -207,6 +210,23 @@ export namespace DemoComponent
 		template <class T>
 		void remove(Entity& entity)
 		{
+			if (auto item = entities.find(entity.getId()); item == entities.end())
+			{
+				return;
+			}
+
+			auto pool = getPool<T>();
+
+			if (pool == nullptr)
+			{
+				return;
+			}
+
+			if (auto component = pool->entityToComponent.find(entity.getId()); component != pool->entityToComponent.end())
+			{
+				pool->components[component->second].reset();
+				pool->entityToComponent.erase(component->first);
+			}
 		}
 
 		std::string toString() const
@@ -256,12 +276,18 @@ export namespace DemoComponent
 		coordinator.registerComponent<Transform>();
 
 		Entity car = coordinator.createEntity("Car");
+		Entity plane = coordinator.createEntity("Plane");
 		Entity truck = coordinator.createEntity("Truck");
 
 		coordinator.add(car, std::make_shared<Engine>("Engine for car"));
 		coordinator.add(car, std::make_shared<Renderer>("Renderer for car"));
 		coordinator.add(car, std::make_shared<Transform>("Transform for car"));
 
+		coordinator.add(plane, std::make_shared<Engine>("Engine for plane"));
+		coordinator.add(plane, std::make_shared<Renderer>("Renderer for plane"));
+		coordinator.add(plane, std::make_shared<Transform>("Transform for plane"));
+
+		coordinator.add(truck, std::make_shared<Engine>("Engine for truck"));
 		coordinator.add(truck, std::make_shared<Renderer>("Renderer for truck"));
 		coordinator.add(truck, std::make_shared<Transform>("Transform for truck"));
 
@@ -273,6 +299,14 @@ export namespace DemoComponent
 		auto c5 = coordinator.get<Renderer>(truck);
 		auto c6 = coordinator.get<Transform>(truck);
 
+		std::cout << "--------------------------------------------------" << std::endl;
+		std::cout << coordinator.toString() << std::endl;
+
+		coordinator.remove<Engine>(car);
+		coordinator.remove<Renderer>(plane);
+		coordinator.remove<Transform>(truck);
+
+		std::cout << "--------------------------------------------------" << std::endl;
 		std::cout << coordinator.toString() << std::endl;
 	}
 }
