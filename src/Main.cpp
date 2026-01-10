@@ -4,6 +4,7 @@ import <iostream>;
 import <list>;
 import <map>;
 import <numeric>;
+import <ranges>;
 import <thread>;
 import <vector>;
 
@@ -18,14 +19,14 @@ import DemoPrototype;
 
 int main()
 {
-	DemoBuilder::run();
-	DemoComponents::run();
-	DemoEvents::run();
-	DemoFacade::run();
-	DemoFlyweight::run();
-	DemoFactory::run();
-	DemoOrders::run();
-	DemoPrototype::run();
+	// DemoBuilder::run();
+	// DemoComponents::run();
+	// DemoEvents::run();
+	// DemoFacade::run();
+	// DemoFlyweight::run();
+	// DemoFactory::run();
+	// DemoOrders::run();
+	// DemoPrototype::run();
 
 	return 0;
 }

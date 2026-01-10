@@ -34,16 +34,16 @@ export namespace DemoFacade
 		{
 			DeviceCreator deviceCreator;
 
-			device = deviceCreator.create();
-			device.powerOn();
+			mDevice = deviceCreator.create();
+			mDevice.powerOn();
 
 			DeviceTester deviceTester;
 
-			deviceTester.test(device);
+			deviceTester.test(mDevice);
 		}
 
 	private:
-		Device device;
+		Device mDevice;
 	};
 
 	void run()

@@ -13,13 +13,11 @@ export namespace DemoPrototype
 	class Circle : public Shape
 	{
 	public:
-		float radius;
-
-		Circle(float radius) : radius(radius)
+		Circle(float radius) : mRadius(radius)
 		{
 		}
 
-		Circle(const Circle& other) : radius(other.radius)
+		Circle(const Circle& other) : mRadius(other.mRadius)
 		{
 		}
 
@@ -27,18 +25,24 @@ export namespace DemoPrototype
 		{
 			return new Circle(*this);
 		}
+
+		float getRadius() const
+		{
+			return mRadius;
+		}
+
+	private:
+		float mRadius;
 	};
 
 	class Square : public Shape
 	{
 	public:
-		float size;
-
-		Square(float size) : size(size)
+		Square(float size) : mSize(size)
 		{
 		}
 
-		Square(const Square& other) : size(other.size)
+		Square(const Square& other) : mSize(other.mSize)
 		{
 		}
 
@@ -46,27 +50,35 @@ export namespace DemoPrototype
 		{
 			return new Square(*this);
 		}
+
+		float getSize() const
+		{
+			return mSize;
+		}
+
+	private:
+		float mSize;
 	};
 
 	void run()
 	{
-		auto circle1 = new Circle(10.0f);
-		auto circle2 = new Circle(20.0f);
-		auto circle3 = circle1->clone();
+		Circle* circle1 = new Circle(10.0f);
+		Circle* circle2 = new Circle(20.0f);
+		Circle* circle3 = circle1->clone();
 
-		auto square1 = new Square(100.0f);
-		auto square2 = new Square(200.0f);
-		auto square3 = square1->clone();
+		Square* square1 = new Square(100.0f);
+		Square* square2 = new Square(200.0f);
+		Square* square3 = square1->clone();
 
-		std::cout << "Radius #1: " << circle1->radius << std::endl;
-		std::cout << "Radius #2: " << circle2->radius << std::endl;
-		std::cout << "Radius #3: " << circle3->radius << std::endl;
+		std::cout << "Radius #1: " << circle1->getRadius() << std::endl;
+		std::cout << "Radius #2: " << circle2->getRadius() << std::endl;
+		std::cout << "Radius #3: " << circle3->getRadius() << std::endl;
 
 		std::cout << std::endl;
 
-		std::cout << "Square #1: " << square1->size << std::endl;
-		std::cout << "Square #2: " << square2->size << std::endl;
-		std::cout << "Square #3: " << square3->size << std::endl;
+		std::cout << "Square #1: " << square1->getSize() << std::endl;
+		std::cout << "Square #2: " << square2->getSize() << std::endl;
+		std::cout << "Square #3: " << square3->getSize() << std::endl;
 
 		delete circle1;
 		delete circle2;

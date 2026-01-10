@@ -8,27 +8,28 @@ export namespace DemoBuilder
 	class Computer
 	{
 	public:
-		std::string cpu;
-		std::string ram;
-
 		void setCPU(const std::string& cpu)
 		{
-			this->cpu = cpu;
+			mCpu = cpu;
 		}
 
 		void setRAM(const std::string& ram)
 		{
-			this->ram = ram;
+			mRam = ram;
 		}
 
 		void displayInfo() const
 		{
 			std::cout
 				<< "Computer Configuration:"
-				<< "\n  CPU: " << cpu
-				<< "\n  RAM: " << ram
+				<< "\n  CPU: " << mCpu
+				<< "\n  RAM: " << mRam
 				<< std::endl;
 		}
+
+	private:
+		std::string mCpu;
+		std::string mRam;
 	};
 
 	class Builder
@@ -44,21 +45,21 @@ export namespace DemoBuilder
 	public:
 		void buildCPU() override
 		{
-			computer.setCPU("Gaming CPU");
+			mComputer.setCPU("Gaming CPU");
 		}
 
 		void buildRAM() override
 		{
-			computer.setRAM("16GB DDR4");
+			mComputer.setRAM("16GB DDR4");
 		}
 
 		Computer getResult() override
 		{
-			return computer;
+			return mComputer;
 		}
 
 	private:
-		Computer computer;
+		Computer mComputer;
 	};
 
 	class ServerComputerBuilder : public Builder
@@ -66,21 +67,21 @@ export namespace DemoBuilder
 	public:
 		void buildCPU() override
 		{
-			computer.setCPU("Server CPU");
+			mComputer.setCPU("Server CPU");
 		}
 
 		void buildRAM() override
 		{
-			computer.setRAM("64GB DDR4");
+			mComputer.setRAM("64GB DDR4");
 		}
 
 		Computer getResult() override
 		{
-			return computer;
+			return mComputer;
 		}
 
 	private:
-		Computer computer;
+		Computer mComputer;
 	};
 
 	class ComputerDirector
