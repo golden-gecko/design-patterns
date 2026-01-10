@@ -2,20 +2,11 @@ cmake_minimum_required(VERSION 4.2)
 
 project(design-patterns)
 
-add_executable(
-	design-patterns
-	Builder.hpp
-	Components.hpp
-	Events.hpp
-	Facade.hpp
-	Factory.hpp
-	Flyweight.hpp
-	Main.cpp
-	Orders.hpp
-	Prototype.hpp
-)
+file(GLOB_RECURSE SOURCE_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
-set_target_properties(design-patterns PROPERTIES
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+
+set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_EXTENSIONS NO
     CXX_STANDARD 23
     CXX_STANDARD_REQUIRED YES

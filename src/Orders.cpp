@@ -1,9 +1,11 @@
-﻿#pragma once
+﻿export module DemoOrders;
 
-#include <memory>
-#include <string>
+import <memory>;
+import <string>;
 
-namespace DemoOrders
+import DemoFactory;
+
+export namespace DemoOrders
 {
 	struct Vector3
 	{

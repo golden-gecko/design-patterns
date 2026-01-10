@@ -1,8 +1,8 @@
-﻿#pragma once
+﻿export module DemoPrototype;
 
-#include <iostream>
+import <iostream>;
 
-namespace DemoPrototype
+export namespace DemoPrototype
 {
 	class Shape
 	{

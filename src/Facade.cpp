@@ -1,6 +1,6 @@
-﻿#pragma once
+﻿export module DemoFacade;
 
-namespace DemoFacade
+export namespace DemoFacade
 {
 	class Device
 	{

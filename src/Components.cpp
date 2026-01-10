@@ -1,6 +1,12 @@
-﻿#pragma once
+﻿export module DemoComponents;
 
-namespace DemoComponents
+import <bitset>;
+import <iostream>;
+import <map>;
+import <sstream>;
+import <vector>;
+
+export namespace DemoComponents
 {
 	class Engine
 	{

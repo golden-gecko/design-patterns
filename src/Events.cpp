@@ -1,10 +1,11 @@
-﻿#pragma once
+﻿export module DemoEvents;
 
-#include <functional>
-#include <map>
-#include <string_view>
+import <functional>;
+import <iostream>;
+import <map>;
+import <string_view>;
 
-namespace DemoEvents
+export namespace DemoEvents
 {
 	class Event
 	{
