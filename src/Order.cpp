@@ -7,15 +7,10 @@ import DemoFactory;
 
 export namespace DemoOrder
 {
-	struct Vector3
-	{
-		int x;
-		int y;
-		int z;
-	};
-
 	class Order
 	{
+	public:
+		virtual ~Order() = default;
 	};
 
 	class OrderFactory
@@ -26,8 +21,6 @@ export namespace DemoOrder
 
 	class OrderCreate : public Order
 	{
-	public:
-		int id;
 	};
 
 	class OrderCreateFactory : public OrderFactory
@@ -41,8 +34,6 @@ export namespace DemoOrder
 
 	class OrderMove : public Order
 	{
-	public:
-		Vector3 position;
 	};
 
 	class OrderMoveFactory : public OrderFactory
@@ -61,11 +52,11 @@ export namespace DemoOrder
 		myFactory.registerFactory("Create", std::make_shared<OrderCreateFactory>());
 		myFactory.registerFactory("Move", std::make_shared<OrderCreateFactory>());
 
-		auto order1 = myFactory.create("Create");
-		auto order2 = myFactory.create("Create");
+		std::shared_ptr<Order> order1 = myFactory.create("Create");
+		std::shared_ptr<Order> order2 = myFactory.create("Create");
 
-		auto order3 = myFactory.create("Move");
-		auto order4 = myFactory.create("Move");
-		auto order5 = myFactory.create("Move");
+		std::shared_ptr<Order> order3 = myFactory.create("Move");
+		std::shared_ptr<Order> order4 = myFactory.create("Move");
+		std::shared_ptr<Order> order5 = myFactory.create("Move");
 	}
 }

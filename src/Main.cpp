@@ -22,7 +22,7 @@ int main()
 	// DemoMove::run();
 	// DemoOrders::run();
 	// DemoPrototype::run();
-	DemoThread::run();
+	// DemoThread::run();
 
 	std::cin.get();
 
