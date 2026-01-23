@@ -10,11 +10,12 @@ import DemoMove;
 import DemoOrder;
 import DemoPrototype;
 import DemoThread;
+import DemoView;
 
 int main()
 {
 	// DemoBuilder::run();
-	DemoComponent::run();
+	// DemoComponent::run();
 	// DemoEvents::run();
 	// DemoFacade::run();
 	// DemoFlyweight::run();
@@ -23,6 +24,7 @@ int main()
 	// DemoOrders::run();
 	// DemoPrototype::run();
 	// DemoThread::run();
+	DemoView::run();
 
 	std::cin.get();
 
