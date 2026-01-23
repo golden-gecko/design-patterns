@@ -300,12 +300,16 @@ export namespace DemoComponent
 		auto c6 = coordinator.get<Transform>(truck);
 
 		std::cout << "--------------------------------------------------" << std::endl;
+		std::cout << "--- After add ------------------------------------" << std::endl;
+		std::cout << "--------------------------------------------------" << std::endl;
 		std::cout << coordinator.toString() << std::endl;
 
 		coordinator.remove<Engine>(car);
 		coordinator.remove<Renderer>(plane);
 		coordinator.remove<Transform>(truck);
 
+		std::cout << "--------------------------------------------------" << std::endl;
+		std::cout << "--- After remove ---------------------------------" << std::endl;
 		std::cout << "--------------------------------------------------" << std::endl;
 		std::cout << coordinator.toString() << std::endl;
 	}

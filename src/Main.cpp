@@ -14,7 +14,7 @@ import DemoThread;
 int main()
 {
 	// DemoBuilder::run();
-	// DemoComponents::run();
+	DemoComponent::run();
 	// DemoEvents::run();
 	// DemoFacade::run();
 	// DemoFlyweight::run();
