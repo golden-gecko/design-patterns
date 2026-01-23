@@ -1,11 +1,11 @@
-﻿export module DemoOrders;
+﻿export module DemoOrder;
 
 import <memory>;
 import <string>;
 
 import DemoFactory;
 
-export namespace DemoOrders
+export namespace DemoOrder
 {
 	struct Vector3
 	{

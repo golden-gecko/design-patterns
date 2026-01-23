@@ -1,21 +1,15 @@
-﻿import <chrono>;
-import <concepts>;
-import <iostream>;
-import <list>;
-import <map>;
-import <numeric>;
-import <ranges>;
-import <thread>;
-import <vector>;
+﻿import <iostream>;
 
 import DemoBuilder;
-import DemoComponents;
-import DemoEvents;
+import DemoComponent;
+import DemoEvent;
 import DemoFacade;
 import DemoFlyweight;
 import DemoFactory;
-import DemoOrders;
+import DemoMove;
+import DemoOrder;
 import DemoPrototype;
+import DemoThread;
 
 int main()
 {
@@ -25,8 +19,12 @@ int main()
 	// DemoFacade::run();
 	// DemoFlyweight::run();
 	// DemoFactory::run();
+	// DemoMove::run();
 	// DemoOrders::run();
 	// DemoPrototype::run();
+	DemoThread::run();
+
+	std::cin.get();
 
 	return 0;
 }

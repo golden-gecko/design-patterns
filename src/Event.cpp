@@ -1,11 +1,11 @@
-﻿export module DemoEvents;
+﻿export module DemoEvent;
 
 import <functional>;
 import <iostream>;
 import <map>;
 import <string_view>;
 
-export namespace DemoEvents
+export namespace DemoEvent
 {
 	class Event
 	{

@@ -1,4 +1,4 @@
-﻿export module DemoComponents;
+﻿export module DemoComponent;
 
 import <bitset>;
 import <iostream>;
@@ -6,7 +6,7 @@ import <map>;
 import <sstream>;
 import <vector>;
 
-export namespace DemoComponents
+export namespace DemoComponent
 {
 	class Engine
 	{
