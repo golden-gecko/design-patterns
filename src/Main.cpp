@@ -24,7 +24,7 @@ int main()
 	// DemoOrders::run();
 	// DemoPrototype::run();
 	// DemoThread::run();
-	DemoView::run();
+	// DemoView::run();
 
 	std::cin.get();
 

@@ -81,7 +81,7 @@ export namespace DemoComponent
 			return name;
 		}
 
-		template <class T>
+		template<class T>
 		void add()
 		{
 		}
@@ -98,7 +98,7 @@ export namespace DemoComponent
 		virtual std::string toString() const = 0;
 	};
 
-	template <class T>
+	template<class T>
 	class Pool : public IPool
 	{
 	public:
@@ -155,7 +155,7 @@ export namespace DemoComponent
 			return entity;
 		}
 
-		template <class T>
+		template<class T>
 		void registerComponent()
 		{
 			std::string_view typeName = typeid(T).name();
@@ -166,7 +166,7 @@ export namespace DemoComponent
 			componentCount += 1;
 		}
 
-		template <class T>
+		template<class T>
 		std::shared_ptr<Pool<T>> getPool() const
 		{
 			if (auto pool = components.find(std::string_view(typeid(T).name())); pool != components.end())
@@ -177,7 +177,7 @@ export namespace DemoComponent
 			return nullptr;
 		}
 
-		template <class T>
+		template<class T>
 		void add(Entity& entity, std::shared_ptr<T> component)
 		{
 			auto pool = getPool<T>();
@@ -189,7 +189,7 @@ export namespace DemoComponent
 			}
 		}
 
-		template <class T>
+		template<class T>
 		std::shared_ptr<T> get(Entity& entity)
 		{
 			if (auto item = entities.find(entity.getId()); item == entities.end())
@@ -207,7 +207,7 @@ export namespace DemoComponent
 			return pool->get(entity.getId());
 		}
 
-		template <class T>
+		template<class T>
 		void remove(Entity& entity)
 		{
 			if (auto item = entities.find(entity.getId()); item == entities.end())

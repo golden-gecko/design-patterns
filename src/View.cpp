@@ -52,7 +52,7 @@ export namespace DemoView
 			return x % 2 == 0;
 		}));
 
-		// Print first 4 in revers.
+		// Print first 4 in reverse.
 		print(std::views::take(n, 4) | std::views::reverse);
 
 		// Print zipped.

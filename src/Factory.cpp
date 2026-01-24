@@ -4,7 +4,7 @@ import <map>;
 import <memory>;
 import <string>;
 
-export template <class Id, class BaseType, class FactoryType>
+export template<class Id, class BaseType, class FactoryType>
 class Factory
 {
 public:
