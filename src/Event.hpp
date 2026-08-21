@@ -1,11 +1,12 @@
-﻿export module DemoEvent;
+﻿#pragma once
 
-import <functional>;
-import <iostream>;
-import <map>;
-import <string_view>;
+#include <functional>
+#include <iostream>
+#include <map>
+#include <string_view>
+#include <vector>
 
-export namespace DemoEvent
+namespace DemoEvent
 {
 	class Event
 	{

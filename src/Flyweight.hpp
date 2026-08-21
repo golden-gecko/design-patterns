@@ -1,11 +1,11 @@
-﻿export module DemoFlyweight;
+﻿#pragma once
 
-import <iostream>;
-import <map>;
-import <memory>;
-import <string>;
+#include <iostream>
+#include <map>
+#include <memory>
+#include <string>
 
-export namespace DemoFlyweight
+namespace DemoFlyweight
 {
 	class VehicleType
 	{

@@ -1,12 +1,12 @@
-﻿export module DemoView;
+﻿#pragma once
 
-import <algorithm>;
-import <iostream>;
-import <ranges>;
-import <string>;
-import <vector>;
+#include <algorithm>
+#include <iostream>
+#include <ranges>
+#include <string>
+#include <vector>
 
-export namespace DemoView
+namespace DemoView
 {
 	template<class T>
 	void print(T&& collection)

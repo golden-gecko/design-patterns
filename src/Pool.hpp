@@ -1,9 +1,9 @@
-﻿export module DemoPool;
+﻿#pragma once
 
-import <iostream>;
-import <vector>;
+#include <iostream>
+#include <vector>
 
-export namespace DemoPool
+namespace DemoPool
 {
 	class Particle
 	{

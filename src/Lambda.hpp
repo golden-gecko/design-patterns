@@ -1,11 +1,11 @@
-﻿export module DemoLambda;
+﻿#pragma once
 
-import <algorithm>;
-import <iostream>;
-import <string>;
-import <vector>;
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 
-export namespace DemoLambda
+namespace DemoLambda
 {
 	class MyLambda
 	{

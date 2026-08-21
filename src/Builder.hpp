@@ -1,9 +1,9 @@
-﻿export module DemoBuilder;
+﻿#pragma once
 
-import <iostream>;
-import <string>;
+#include <iostream>
+#include <string>
 
-export namespace DemoBuilder
+namespace DemoBuilder
 {
 	class Computer
 	{

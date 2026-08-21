@@ -1,9 +1,10 @@
-﻿export module DemoMove;
+﻿#pragma once
 
-import <iostream>;
-import <string>;
+#include <iostream>
+#include <string>
+#include <utility>
 
-export namespace DemoMove
+namespace DemoMove
 {
 	class Vehicle
 	{

@@ -1,12 +1,14 @@
-﻿export module DemoThread;
+﻿#pragma once
 
-import <iostream>;
-import <string>;
-import <syncstream>;
-import <thread>;
-import <vector>;
+#include <iostream>
+#include <string>
+#include <syncstream>
+#include <thread>
+#include <vector>
+#include <mutex>
+#include <cstdlib>
 
-export namespace DemoThread
+namespace DemoThread
 {
 	std::vector<int> numbers;
 	std::mutex numbersMutex;

@@ -1,12 +1,12 @@
-﻿export module DemoComponent;
+﻿#pragma once
 
-import <bitset>;
-import <iostream>;
-import <map>;
-import <sstream>;
-import <vector>;
+#include <bitset>
+#include <iostream>
+#include <map>
+#include <sstream>
+#include <vector>
 
-export namespace DemoComponent
+namespace DemoComponent
 {
 	using ComponentType = std::uint8_t;
 	const ComponentType MAX_COMPONENTS = 32;

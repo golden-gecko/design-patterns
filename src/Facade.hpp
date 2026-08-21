@@ -1,6 +1,4 @@
-﻿export module DemoFacade;
-
-export namespace DemoFacade
+﻿namespace DemoFacade
 {
 	class Device
 	{

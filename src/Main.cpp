@@ -1,36 +1,36 @@
-﻿import <iostream>;
+﻿#include <iostream>
 
-import DemoAdapter;
-import DemoBuilder;
-import DemoComponent;
-import DemoEvent;
-import DemoFacade;
-import DemoFlyweight;
-import DemoFactory;
-import DemoLambda;
-import DemoMove;
-import DemoOrder;
-import DemoPool;
-import DemoPrototype;
-import DemoThread;
-import DemoView;
+#include "Adapter.hpp"
+#include "Builder.hpp"
+#include "Component.hpp"
+#include "Event.hpp"
+#include "Facade.hpp"
+#include "Factory.hpp"
+#include "Flyweight.hpp"
+#include "Lambda.hpp"
+#include "Move.hpp"
+#include "Order.hpp"
+#include "Pool.hpp"
+#include "Prototype.hpp"
+#include "Thread.hpp"
+#include "View.hpp"
 
 int main()
 {
-	// DemoAdapter::run();
-	// DemoBuilder::run();
-	// DemoComponent::run();
-	// DemoEvents::run();
-	// DemoFacade::run();
-	// DemoFlyweight::run();
-	// DemoFactory::run();
-	// DemoMove::run();
-	// DemoLambda::run();
-	// DemoOrders::run();
-	// DemoPool::run();
-	// DemoPrototype::run();
+	DemoAdapter::run();
+	DemoBuilder::run();
+	DemoComponent::run();
+	DemoEvent::run();
+	DemoFacade::run();
+	DemoFlyweight::run();
+	DemoFactory::run();
+	DemoMove::run();
+	DemoLambda::run();
+	DemoOrder::run();
+	DemoPool::run();
+	DemoPrototype::run();
 	// DemoThread::run();
-	// DemoView::run();
+	DemoView::run();
 
 	std::cin.get();
 

@@ -1,10 +1,10 @@
-﻿export module DemoFactory;
+﻿#pragma once
 
-import <map>;
-import <memory>;
-import <string>;
+#include <map>
+#include <memory>
+#include <string>
 
-export template<class Id, class BaseType, class FactoryType>
+template<class Id, class BaseType, class FactoryType>
 class Factory
 {
 public:
@@ -32,7 +32,7 @@ private:
 	std::map<Id, std::shared_ptr<FactoryType>> factories;
 };
 
-export namespace DemoFactory
+namespace DemoFactory
 {
 	class Vehicle
 	{

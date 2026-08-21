@@ -1,11 +1,10 @@
-﻿export module DemoOrder;
+﻿#pragma once
 
-import <memory>;
-import <string>;
+#include <memory>
+#include <string>
+#include "Factory.hpp"
 
-import DemoFactory;
-
-export namespace DemoOrder
+namespace DemoOrder
 {
 	class Order
 	{
